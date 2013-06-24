@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Wunderlist by mytrile</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Wunderlist</h1>
+        <p class="header">Go wrapper for Wunderlist 2 unofficial API</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/mytrile/wunderlist/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/mytrile/wunderlist/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/mytrile/wunderlist">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/mytrile">mytrile</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="wunderlist" class="anchor" href="#wunderlist"><span class="octicon octicon-link"></span></a>wunderlist</h1>
+
+<p>wunderlist is Go wrapper for <a href="https://www.wunderlist.com/">Wunderlist</a> <a href="https://wunderpy.readthedocs.org/en/latest/wunderlist_api/index.html">unofficial API</a>.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>  $ go install github.com/mytrile/wunderlist
+</code></pre>
+
+<h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>Get all available tasks</p>
+
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"github.com/mytrile/wunderlist"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">client</span> <span class="o">:=</span> <span class="nx">wunderlist</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="s">"your@email.com"</span><span class="p">,</span> <span class="s">"password"</span><span class="p">)</span>
+  <span class="nx">tasks</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Tasks</span><span class="p">()</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%+v"</span><span class="p">,</span> <span class="nx">tasks</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a name="account" class="anchor" href="#account"><span class="octicon octicon-link"></span></a>Account</h3>
+
+<div class="highlight"><pre><span class="c1">// Get the information about the user</span>
+<span class="nx">account</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Account</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// Get the settings of the user</span>
+<span class="nx">settings</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Settings</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// Get the friends of the user</span>
+<span class="nx">friends</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Friends</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// Get the shares of the user</span>
+<span class="nx">shares</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Shares</span><span class="p">()</span>
+</pre></div>
+
+<h3>
+<a name="tasks" class="anchor" href="#tasks"><span class="octicon octicon-link"></span></a>Tasks</h3>
+
+<div class="highlight"><pre><span class="c1">// Get all available tasks</span>
+<span class="nx">tasks</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Tasks</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// Add task</span>
+<span class="nx">task</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">AddTask</span><span class="p">(</span><span class="s">"list_id"</span><span class="p">,</span> <span class="s">"title"</span><span class="p">,</span> <span class="s">"true"</span><span class="p">,</span> <span class="s">"2013-10-23T17:06:28Z"</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="lists" class="anchor" href="#lists"><span class="octicon octicon-link"></span></a>Lists</h3>
+
+<div class="highlight"><pre><span class="c1">// Get all available lists</span>
+<span class="nx">lists</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Lists</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// Add task</span>
+<span class="nx">list</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">AddList</span><span class="p">(</span><span class="s">"title"</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="reminders" class="anchor" href="#reminders"><span class="octicon octicon-link"></span></a>Reminders</h3>
+
+<div class="highlight"><pre><span class="c1">// Get all available reminders</span>
+<span class="nx">reminders</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Reminders</span><span class="p">()</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">// Add task</span>
+<span class="nx">reminder</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">AddReminder</span><span class="p">(</span><span class="s">"task_id"</span><span class="p">,</span> <span class="s">"2013-10-23T17:06:28Z"</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="note" class="anchor" href="#note"><span class="octicon octicon-link"></span></a>Note</h3>
+
+<p>Some functions like updating/deleting entities are missing. <a href="http://godoc.org/github.com/mytrile/wunderlist">Here is the full API</a>.</p>
+
+<p>Credits to <a href="https://github.com/bsmt">bsmt</a> for
+<a href="http://bsmt.me/blog/2013/03/02/reverse-engineering-the-wunderlist-api/">this wonderfull article</a> about reverse engineering the api. You can find the reference API <a href="https://wunderpy.readthedocs.org/en/latest/">here</a>.</p>
+
+<h3>
+<a name="meta" class="anchor" href="#meta"><span class="octicon octicon-link"></span></a>Meta</h3>
+
+<ul>
+<li>Author  - Dimitar Kostov</li>
+<li>Email   - <a href="mailto:mitko.kostov@gmail.com">mitko.kostov@gmail.com</a>
+</li>
+<li>Blog    - <a href="http://mytrile.github.io">http://mytrile.github.io</a>
+</li>
+<li>Twitter - <a href="https://twitter.com/mytrile">mytrile</a>
+</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2013 Dimitar Kostov <a href="mailto:mitko.kostov@gmail.com">mitko.kostov@gmail.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
