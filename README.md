@@ -86,7 +86,7 @@ reminder, _ := client.AddReminder("task_id", "2013-10-23T17:06:28Z")
 ```
 
 ### Note
-Some functions like updating/deleting entities are missing.
+Some functions like updating/deleting entities are missing. [Here is the full API](http://godoc.org/github.com/mytrile/wunderlist).
 
 Credits to [bsmt](https://github.com/bsmt) for
 [this wonderfull article](http://bsmt.me/blog/2013/03/02/reverse-engineering-the-wunderlist-api/) about reverse engineering the api. You can find the reference API [here](https://wunderpy.readthedocs.org/en/latest/).
