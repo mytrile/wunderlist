@@ -4,7 +4,7 @@ wunderlist is Go wrapper for [Wunderlist](https://www.wunderlist.com/) [unoffici
 
 ## Installation
 
-      $ go install github.com/mytrile/wunderlist
+      $ go get github.com/mytrile/wunderlist
 
 ## Example
 
