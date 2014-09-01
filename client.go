@@ -26,8 +26,8 @@ type AuthResponse struct {
 	Email             string            `json:"email"`
 	Avatar            string            `json:"avatar"`
 	Token             string            `json:"token"`
-	EmailConfirmed    string            `json:"email_confirmed"`
-	ConfirmationState bool              `json:"confirmation_state"`
+	EmailConfirmed    bool              `json:"email_confirmed"`
+	ConfirmationState string            `json:"confirmation_state"`
 	Product           string            `json:"product"`
 	Channel           string            `json:"channel"`
 	TermsAcceptedAt   string            `json:"terms_accepted_at"`
